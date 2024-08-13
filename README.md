@@ -1,5 +1,5 @@
-# ClickStreaming-Pipeline-
-# Streaming Data Platform
+# ClickStreaming-Pipeline
+## Streaming Data Platform
 
 This project implements a comprehensive data processing pipeline for handling streaming data. It demonstrates how to ingest, validate, enrich, and store streaming events using Kafka, Minio, and Spark Streaming.
 
