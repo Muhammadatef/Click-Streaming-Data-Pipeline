@@ -1,0 +1,79 @@
+key_schema = """
+{
+  "type": "record",
+  "name": "EventKey",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long"
+    }
+  ]
+}
+"""
+value_schema = """
+{
+  "type": "record",
+  "name": "EventValue",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "package_id",
+      "type": "string"
+    },
+    {
+      "name": "event",
+      "type": {
+        "type": "record",
+        "name": "EventDetails",
+        "fields": [
+          {
+            "name": "user_agent",
+            "type": "string"
+          },
+          {
+            "name": "ip",
+            "type": "string"
+          },
+          {
+            "name": "customer_id",
+            "type": ["long", "null"],
+            "default": null
+          },
+          {
+            "name": "timestamp",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "type": ["string", "null"],
+            "default": null
+          },
+          {
+            "name": "query",
+            "type": ["string", "null"],
+            "default": null
+          },
+          {
+            "name": "product",
+            "type": ["long", "null"],
+            "default": null
+          },
+          {
+            "name": "referrer",
+            "type": ["string", "null"],
+            "default": null
+          },
+          {
+            "name": "position",
+            "type": ["long", "null"],
+            "default": null
+          }
+        ]
+      }
+    }
+  ]
+}
+"""

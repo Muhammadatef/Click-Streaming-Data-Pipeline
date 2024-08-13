@@ -1,0 +1,26 @@
+Setting Up Virtual Environment and Dependencies
+    cd DataEngineerChallenge/
+    virtualenv -p python3.11 ./venv
+    source api/venv/bin/activate
+    pip install -r requirements.txt
+Starting Kafka and Kafka Connect with Docker
+    docker-compose up -d --build (Executes the docker-compose file which should contain your Kafka and Kafka Connect services.)
+    docker exec -it kafka0 bash (Access the Kafka container if needed.)
+Kafka Topics Management
+    docker exec -it kafka0 kafka-topics --create --topic acme.clickstream.raw.events --partitions 6 --replication-factor 1 --bootstrap-server localhost:9092
+    docker exec -it kafka0 kafka-topics --list --bootstrap-server localhost:9092 (List all topics to verify creation.)
+Kafka Connectors Setup (Assuming scripts are ready)
+    cd connectors/
+    chmod +x create_connector.sh
+    ./create_connector.sh "acme.eu.clickstream.raw.s3.sink.json"
+Start Spark Jobs
+    docker exec -it spark-master /bin/bash (Access the Spark master container if needed.)
+    spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0,org.apache.hadoop:hadoop-aws:3.2.0 /opt/spark-apps/your_spark_script.py (Adjust the path to your Spark application script as needed.)
+Running the API Server
+    cd api/
+    python3 server.py (Start the Flask API server.)
+Kafka and Spark Management and Monitoring
+    docker-compose logs kafka-connect0 (View logs for Kafka Connect.)
+    docker-compose exec kafka-connect0 kafka-console-consumer --bootstrap-server kafka0:29092 --topic test-topic --from-beginning (Test the Kafka consumer to see messages from the beginning of the specified topic.)
+Clean-up or Reset if Needed
+    docker-compose down (Stops and removes the containers managed by Docker Compose.)
