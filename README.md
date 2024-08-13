@@ -100,8 +100,6 @@ Shutdown the Platform
 
     To stop and remove all containers, run:
 
-
-
         $ docker compose down
 
 Monitoring
