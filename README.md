@@ -56,9 +56,7 @@ API Server
 
     Navigate to the api directory:
 
-    bash
-
-$ cd api
+    $ cd api
 
 Install dependencies and start the server:
 
@@ -75,13 +73,9 @@ Generate Data
 
     Navigate to the generator directory:
 
-    bash
-
-$ cd generator
+    $ cd generator
 
 Install dependencies and run the data generator:
-
-bash
 
     $ pipenv --python 3.11
     $ pipenv shell
@@ -94,13 +88,9 @@ Run Spark Streaming
 
     Access the Spark Master container:
 
-    
-
-$ docker exec -it spark-master bash
+       $ docker exec -it spark-master bash
 
 Run the Spark Streaming job:
-
-bash
 
     /opt/bitnami/spark/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0 /opt/spark-apps/spark_streaming.py
 
